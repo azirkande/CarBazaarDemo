@@ -1,0 +1,37 @@
+﻿@model CarSalesDemo.Web.ViewModels.CarViewModel
+
+    <div class="car-row-listing ">
+        <div class="container-fluid">
+            <div class=" row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>@Model.Name</h3>
+                        </div>
+                        @if (Model.SellarType == sDemo.Core.SellarType.Dealer)
+                        {
+                        <div class="col-md-8 row-content">
+                            Dealer
+                        </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-8 row-content">
+                                Private sellar
+                            </div>
+
+                        }
+                        <div class="col-md-8 row-content">
+                            @Html.DisplayFor(m=>m.Price)
+                        </div>
+                        <div class="col-md-8 row-content">
+                            <a class="btn btn-default" href="@Url.Action("Details","Car",new { carId =Model.Id})" role="button">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <a href="@Url.Action("Details","Car",new { carId =Model.Id})"><img src="~/images/@Model.ImageFile" alt="car1" class="img-thumbnail" width="200" height="150" /></a>
+                </div>
+            </div>
+        </div>
+    </div>

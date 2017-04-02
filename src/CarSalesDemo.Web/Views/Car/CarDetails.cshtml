@@ -1,0 +1,67 @@
+﻿@model  CarSalesDemo.Web.ViewModels.CarViewModel
+
+<div class="backToResults">
+    <a href="@Url.Action("Index","Car")">Back to Results</a>
+</div>
+<div class="carDetailsContainer">
+
+    <div class="carDetails">
+        <div class="container">
+            <div class="row  row-content">
+                <div class="col-md-4">
+                    <h3> @Model.Name</h3>
+                </div>
+            </div>
+            <div class="row  row-content">
+                <div class="col-md-4">
+                    <img src="~/images/@Model.ImageFile" alt="car1" class="img-thumbnail" width="400" height="200" />
+                </div>
+            </div>
+            <div class="row row-content">
+                <h3 class="headerCenter">More Details</h3>
+            </div>
+            <div class="row row-content">
+                <div class="col-md-4">Vehicle </div>
+                <div class="col-md-4"> @Model.Name </div>
+            </div>
+            <div class="row row-content">
+                <div class="col-md-4">Email </div>
+                <div class="col-md-4">@Model.Email </div>
+            </div>
+            <div class="row row-content">
+                <div class="col-md-4">Price </div>
+                <div class="col-md-4"> @Html.DisplayFor(m => m.Price) </div>
+            </div>
+            @if (Model.SellarType == sDemo.Core.SellarType.Dealer)
+            {
+                <div class="row row-content">
+                    <div class="col-md-4">Dealer ABN </div>
+                    <div class="col-md-4">@Model.Dealer.Abn</div>
+                </div>
+
+            }
+            else
+            {
+                <div class="row row-content">
+                    <div class="col-md-4">Sellar Name </div>
+                    <div class="col-md-4">@Model.PrivateSellar.Name</div>
+                </div>
+
+                <div class="row row-content">
+                    <div class="col-md-4">Sellar Contact </div>
+                    <div class="col-md-4">@Model.PrivateSellar.Phone</div>
+                </div>
+                <div class="row-partition"></div>
+            }
+            <div class="row row-content">
+                <div class="col-md-12 row-content">Comments: </div>
+                <div class="row-content col-md-12 comments">@Html.Raw(Model.Comments) </div>
+            </div>
+        </div>
+    </div>
+    <div class="enquiry">
+        <div id="enquirySection">
+            @await Component.InvokeAsync("Enquiry", new { carId = Model.Id })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model CarSalesDemo.Web.ViewModels.EnquiryViewModel
+<div>
+    @using (Html.BeginForm("SaveEnquiry", "Enquiry", FormMethod.Post, new { id = "enquiryForm" }))
+    {
+        <h3 class="headerCenter">Submit your enquiry</h3>
+        <fieldset>
+            <div class="container enquiryContents">
+                @Html.HiddenFor(m=>m.CarId)
+                <div class="row row-content">
+                    <div class="col-md-2">Name:</div>
+                    <div class="col-md-2">
+                        @Html.EditorFor(m => m.Name, new { htmlAttributes = new { id = "customerEnquiryName" } })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="row row-content">
+                    <div class="col-md-2">Email: </div>
+                    <div class="col-md-2">
+                        @Html.EditorFor(m => m.Email, new { htmlAttributes = new { id = "customerEnquiryEmail" } })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="submitEnquiry">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"> <input type="submit" value="Submit Enquiry" /></div>
+                       
+                    </div>
+            </div>
+        </fieldset>
+    }
+</div>
