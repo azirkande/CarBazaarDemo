@@ -14,6 +14,7 @@ namespace Demo.Core.Database
         public CarDbContext()
         {
             Cars = GetDummyCars();
+            Enquiries = new List<Enquiry>();
         }
 
         private List<Car> GetDummyCars()
